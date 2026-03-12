@@ -2,6 +2,10 @@
 
 This README documents how to execute the project using Spec-Driven Development with Spec Kit from start to implementation, while ensuring all six team roles are actively used.
 
+Decision for this repo: **Approach A (Spec-First)**.  
+We will complete constitution, spec, clarification, plan, tasks, and quality gates first.  
+Framework implementation starts only after spec artifacts are approved.
+
 References:
 - Figma: [Enterprise CMS Marketplace Platform](https://tack-case-95137354.figma.site/governance)
 - Spec Kit: [github/spec-kit](https://github.com/github/spec-kit)
@@ -21,23 +25,24 @@ Use this role mapping during execution and demo:
 
 ## 2) Project Initialization (PowerShell)
 
-Run these commands in terminal:
+Run these commands from this project root:
 
 ```powershell
 # Install Spec Kit CLI (one-time)
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
-# Create project folder
-mkdir sirva-cms-marketplace
-cd sirva-cms-marketplace
+# Move to this repository
+cd "c:\Raaghu Project\Spec Kit Bootcamp\Sirva-Dashbaord-Demo-POC"
 
 # Initialize Spec Kit for Cursor
-specify init . --ai cursor-agent --script ps
+specify init . --ai cursor-agent --script ps --force
 ```
 
-If current folder already has files:
+If you face Windows encoding issue while running `specify init`:
 
 ```powershell
+$env:PYTHONUTF8=1
+$env:PYTHONIOENCODING='utf-8'
 specify init . --ai cursor-agent --script ps --force
 ```
 
@@ -55,6 +60,10 @@ Run these slash commands in Cursor chat in exact order:
 8. `/speckit.implement`
 
 This sequence gives a complete start-to-end execution trail for hackathon judging.
+
+Approach A governance rule:
+- Do not start framework coding before `/speckit.tasks` is approved by PM + Architect + QA.
+- `/speckit.implement` should execute only after `/speckit.analyze` and `/speckit.checklist` findings are resolved or accepted.
 
 ## 4) Role Ownership Across Commands
 
@@ -197,9 +206,9 @@ Plan command:
 
 `/speckit.plan`
 
-Plan message (Angular-first example):
+Plan message (spec-first, framework-neutral):
 
-"Create implementation plan using Angular frontend (standalone components), role-based routing, reusable widget components, rules engine API integration, analytics pipeline, and approval workflow services. Define API contracts, data model, and deployment assumptions for POC."
+"Create implementation plan for Sirva CMS Marketplace POC with modular architecture, API contracts, RBAC, approval workflow, rules engine, analytics events, and deployment assumptions. Keep technology choice open until plan review; include selection criteria and trade-offs."
 
 ### E) Developer B / Frontend (Constitution FE Quality + Tasks + Implement)
 
@@ -305,4 +314,17 @@ Use this quick sequence in final presentation:
 6. **QA (1 min):** `/speckit.analyze`, `/speckit.checklist`, test and readiness status.
 
 This makes all 6 members active in both execution and presentation.
+
+## 13) Spec-First Gate (Before Any Framework Code)
+
+Coding starts only when all checks are satisfied:
+
+- Constitution has role-wise non-negotiables from all contributors.
+- `spec.md` has complete user stories and measurable acceptance criteria.
+- Clarifications are resolved and documented.
+- `plan.md` has architecture decisions, contracts, and risk notes.
+- `tasks.md` is dependency-ordered and assigned across team members.
+- Analyze/checklist issues are closed, deferred with reason, or approved by PM.
+
+Only after this gate should the team choose and start implementation stack (Angular or any approved alternative).
 
