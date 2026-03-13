@@ -1,16 +1,11 @@
 <!--
 Sync Impact Report
-- Version change: 1.2.0 → 1.3.0
+- Version change: 1.3.0 → 1.4.0
 - Modified principles: None (existing principles unchanged)
 - Added sections:
-  - Principle VIII: Angular Modular Architecture (new)
+  - Principle IX: Coding Standards & Quality (NON-NEGOTIABLE)
 - Removed sections: None
-- Templates requiring updates:
-  - ✅ .specify/templates/plan-template.md — Constitution Check includes Principle VIII; no structural change.
-  - ✅ .specify/templates/spec-template.md — No structural update required.
-  - ✅ .specify/templates/tasks-template.md — No structural update required; task categorization aligns with feature/core/shared modules.
-  - ✅ .specify/templates/constitution-template.md — Source template; no update required (this file is the live document).
-  - ✅ .cursor/commands/speckit.constitution.md — No update required.
+- Templates: No structural updates required; Constitution Check is filled from constitution.
 - Follow-up TODOs: None
 -->
 
@@ -217,6 +212,38 @@ ensures the platform is usable by all users while remaining scalable across modu
 onboarding, and ensures the codebase can scale as new capabilities (e.g., additional
 marketplace or analytics modules) are added.
 
+### IX. Coding Standards & Quality (NON-NEGOTIABLE)
+
+- **TypeScript**: All code MUST use TypeScript with strict typing enabled; ad-hoc or
+  untyped structures are prohibited (see also Principle VIII).
+- **Linting and formatting**:
+  - ESLint MUST be configured and MUST enforce coding standards; the build MUST fail on
+    ESLint errors for the affected scope (or violations MUST be explicitly waived with
+    justification in code review).
+  - Prettier MUST be configured and MUST enforce consistent formatting; formatting MUST
+    be applied consistently (e.g., via pre-commit or CI).
+- **Angular**: Angular best practices MUST be followed as documented in the official
+  Angular style guide and as reflected in Principles II and VIII.
+- **Components**: Components MUST be reusable and modular; shared patterns MUST live in
+  the shared module and MUST NOT contain feature-specific business logic.
+- **API communication**: All API calls MUST be implemented through services; components
+  MUST NOT perform direct HTTP calls or hold API URLs (see Principle VIII).
+- **Error handling**: Error handling MUST be implemented for all API requests; failures
+  MUST be surfaced to the user or logged appropriately and MUST NOT leave the UI in an
+  inconsistent state.
+- **UI state**: All UI components MUST support loading and error states; every
+  user-facing page or widget MUST implement clear loading, error, and empty states (see
+  Principle II).
+- **Logic placement**: Complex logic MUST NOT be placed directly in components;
+  business logic, state, and side effects MUST be delegated to services (see Principle
+  VIII).
+- **Readability and documentation**: Code MUST remain readable, maintainable, and
+  well-documented; non-obvious behavior MUST have comments or documentation sufficient
+  for future maintainers.
+
+**Rationale**: These standards ensure high code quality and maintainability across the
+Sirva CMS Marketplace Platform and reduce defects, onboarding cost, and technical debt.
+
 ## Platform Architecture & Modularity
 
 - The platform MUST support the following high-level modules at minimum (see Principle VIII
@@ -275,4 +302,4 @@ marketplace or analytics modules) are added.
   - New contributors MUST read this constitution and the project README before running any Spec Kit
     commands.
 
-**Version**: 1.3.0 | **Ratified**: 2026-03-13 | **Last Amended**: 2026-03-13
+**Version**: 1.4.0 | **Ratified**: 2026-03-13 | **Last Amended**: 2026-03-13
