@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChartData, ChartOptions } from 'chart.js';
 import {
   AnalyticsData,
   GeoEngagementPoint,
@@ -36,6 +37,61 @@ export class AnalyticsChartComponent {
         return `${x},${y}`;
       })
       .join(' ');
+  }
+
+  toChartData(data: TimeSeriesPoint[] | undefined): ChartData<'line'> {
+    if (!data || data.length === 0) {
+      return {
+        labels: [],
+        datasets: [],
+      };
+    }
+
+    return {
+      labels: data.map((point) => point.timestamp),
+      datasets: [
+        {
+          label: 'Impressions',
+          data: data.map((point) => point.impressions),
+          borderColor: '#7c3aed',
+          backgroundColor: 'rgba(124, 58, 237, 0.12)',
+          tension: 0.35,
+        },
+        {
+          label: 'Clicks',
+          data: data.map((point) => point.clicks),
+          borderColor: '#c6a7ff',
+          backgroundColor: 'rgba(198, 167, 255, 0.1)',
+          tension: 0.35,
+        },
+      ],
+    };
+  }
+
+  getChartOptions(): ChartOptions<'line'> {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+        },
+      },
+      scales: {
+        x: {
+          grid: {
+            color: '#f2f4f7',
+          },
+        },
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: '#f2f4f7',
+          },
+        },
+      },
+    };
   }
 
   geoWidth(item: GeoEngagementPoint, data: GeoEngagementPoint[] | undefined): string {

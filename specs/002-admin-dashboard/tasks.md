@@ -54,16 +54,16 @@
 
 ### Tests for User Story 1
 
-- [ ] T014 [P] [US1] Add KPI rendering and loading-state component tests in `src/app/features/dashboard/components/kpi-card/kpi-card.component.spec.ts`
-- [ ] T015 [P] [US1] Add dashboard container tests for KPI section orchestration in `src/app/features/dashboard/pages/dashboard/dashboard.component.spec.ts`
-- [ ] T016 [P] [US1] Add `DashboardService` KPI success/error/timeout tests in `src/app/core/services/dashboard.service.spec.ts`
+- [x] T014 [P] [US1] Add KPI rendering and loading-state component tests in `src/app/features/dashboard/components/kpi-card/kpi-card.component.spec.ts`
+- [x] T015 [P] [US1] Add dashboard container tests for KPI section orchestration in `src/app/features/dashboard/pages/dashboard/dashboard.component.spec.ts`
+- [x] T016 [P] [US1] Add `DashboardService` KPI success/error/timeout tests in `src/app/core/services/dashboard.service.spec.ts`
 
 ### Implementation for User Story 1
 
 - [x] T017 [P] [US1] Create reusable KPI card component in `src/app/features/dashboard/components/kpi-card/kpi-card.component.ts`, `src/app/features/dashboard/components/kpi-card/kpi-card.component.html`, and `src/app/features/dashboard/components/kpi-card/kpi-card.component.scss`
 - [x] T018 [US1] Wire KPI card component declarations/exports in `src/app/features/dashboard/dashboard.module.ts`
 - [x] T019 [US1] Implement dashboard page KPI section data binding in `src/app/features/dashboard/pages/dashboard/dashboard.component.ts` and `src/app/features/dashboard/pages/dashboard/dashboard.component.html`
-- [ ] T020 [US1] Implement section-level KPI loading skeleton and inline error/retry UX in `src/app/features/dashboard/pages/dashboard/dashboard.component.html` and `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
+- [x] T020 [US1] Implement section-level KPI loading skeleton and inline error/retry UX in `src/app/features/dashboard/pages/dashboard/dashboard.component.html` and `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
 - [x] T021 [US1] Enforce Angular best practices for KPI components (OnPush change detection, typed inputs, pure view model mapping) in `src/app/features/dashboard/components/kpi-card/kpi-card.component.ts` and `src/app/features/dashboard/pages/dashboard/dashboard.component.ts`
 
 **Checkpoint**: US1 is independently functional and testable as MVP.
@@ -78,16 +78,16 @@
 
 ### Tests for User Story 2
 
-- [ ] T022 [P] [US2] Add analytics chart component rendering tests in `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.spec.ts`
-- [ ] T023 [P] [US2] Add dashboard analytics section integration tests in `src/app/features/dashboard/pages/dashboard/dashboard.component.spec.ts`
-- [ ] T024 [P] [US2] Add `DashboardService` partial-response analytics tests in `src/app/core/services/dashboard.service.spec.ts`
+- [x] T022 [P] [US2] Add analytics chart component rendering tests in `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.spec.ts`
+- [x] T023 [P] [US2] Add dashboard analytics section integration tests in `src/app/features/dashboard/pages/dashboard/dashboard.component.spec.ts`
+- [x] T024 [P] [US2] Add `DashboardService` partial-response analytics tests in `src/app/core/services/dashboard.service.spec.ts`
 
 ### Implementation for User Story 2
 
 - [x] T025 [P] [US2] Create reusable analytics chart component in `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.ts`, `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.html`, and `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.scss`
-- [ ] T026 [US2] Configure Chart.js datasets/options mapping in `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.ts`
+- [x] T026 [US2] Configure Chart.js datasets/options mapping in `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.ts`
 - [x] T027 [US2] Integrate analytics section into dashboard container in `src/app/features/dashboard/pages/dashboard/dashboard.component.ts` and `src/app/features/dashboard/pages/dashboard/dashboard.component.html`
-- [ ] T028 [US2] Implement analytics section loading/empty/error fallback behavior in `src/app/features/dashboard/pages/dashboard/dashboard.component.html` and `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
+- [x] T028 [US2] Implement analytics section loading/empty/error fallback behavior in `src/app/features/dashboard/pages/dashboard/dashboard.component.html` and `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
 - [x] T029 [US2] Enforce Angular best practices for analytics component (OnPush, immutable inputs, lightweight template logic) in `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.ts`
 
 **Checkpoint**: US2 is independently functional and testable without breaking US1.
@@ -102,9 +102,9 @@
 
 ### Tests for User Story 3
 
-- [ ] T030 [P] [US3] Add recent activity component tests for list/empty/error states in `src/app/features/dashboard/components/recent-activity/recent-activity.component.spec.ts`
-- [ ] T031 [P] [US3] Add dashboard activity section integration tests in `src/app/features/dashboard/pages/dashboard/dashboard.component.spec.ts`
-- [ ] T032 [P] [US3] Add `DashboardService` activity mapping and sorting tests in `src/app/core/services/dashboard.service.spec.ts`
+- [x] T030 [P] [US3] Add recent activity component tests for list/empty/error states in `src/app/features/dashboard/components/recent-activity/recent-activity.component.spec.ts`
+- [x] T031 [P] [US3] Add dashboard activity section integration tests in `src/app/features/dashboard/pages/dashboard/dashboard.component.spec.ts`
+- [x] T032 [P] [US3] Add `DashboardService` activity mapping and sorting tests in `src/app/core/services/dashboard.service.spec.ts`
 
 ### Implementation for User Story 3
 
@@ -121,10 +121,10 @@
 
 **Purpose**: Final quality hardening, accessibility, and consistency checks across all stories.
 
-- [ ] T037 [P] Run full dashboard unit test suite and fix failures in `src/app/features/dashboard/**/*.spec.ts` and `src/app/core/services/dashboard.service.spec.ts`
-- [ ] T038 Validate WCAG-focused accessibility for dashboard sections and controls in `src/app/features/dashboard/pages/dashboard/dashboard.component.html` and component templates under `src/app/features/dashboard/components/`
-- [ ] T039 [P] Refine dashboard styles for consistent admin layout (sidebar/header/KPI/charts/activity) in `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
-- [ ] T040 Validate quickstart execution steps and update implementation notes in `specs/002-admin-dashboard/quickstart.md`
+- [x] T037 [P] Run full dashboard unit test suite and fix failures in `src/app/features/dashboard/**/*.spec.ts` and `src/app/core/services/dashboard.service.spec.ts`
+- [x] T038 Validate WCAG-focused accessibility for dashboard sections and controls in `src/app/features/dashboard/pages/dashboard/dashboard.component.html` and component templates under `src/app/features/dashboard/components/`
+- [x] T039 [P] Refine dashboard styles for consistent admin layout (sidebar/header/KPI/charts/activity) in `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
+- [x] T040 Validate quickstart execution steps and update implementation notes in `specs/002-admin-dashboard/quickstart.md`
 
 ---
 
