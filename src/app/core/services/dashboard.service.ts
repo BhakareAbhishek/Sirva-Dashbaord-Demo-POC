@@ -14,14 +14,15 @@ import {
   DashboardSummaryData,
   DashboardSummaryResponse,
 } from '../../models/dashboard-summary-response.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
-  private readonly endpoint = '/api/dashboard/summary';
-  private readonly requestTimeoutMs = 10000;
-  private readonly autoRefreshMs = 60000;
+  private readonly endpoint = `${environment.apiUrl}/dashboard/summary`;
+  private readonly requestTimeoutMs = environment.apiTimeout;
+  private readonly autoRefreshMs = environment.autoRefreshInterval;
 
   private readonly manualRefreshSubject = new Subject<void>();
   private readonly lastSuccessfulDataSubject =

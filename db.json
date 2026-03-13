@@ -1,0 +1,460 @@
+{
+  "dashboardSummary": {
+    "status": "success",
+    "data": {
+      "kpis": {
+        "totalVendorsOnboarded": 120,
+        "activeWidgets": 47,
+        "pendingWidgetApprovals": 8,
+        "leadsCaptured": 2140,
+        "asOf": "2026-03-13T11:20:00Z"
+      },
+        "analytics": {
+          "impressionsVsClicks": [
+            { "timestamp": "Jan", "impressions": 46000, "clicks": 12000 },
+            { "timestamp": "Feb", "impressions": 52000, "clicks": 13800 },
+            { "timestamp": "Mar", "impressions": 49000, "clicks": 13100 },
+            { "timestamp": "Apr", "impressions": 62000, "clicks": 15600 },
+            { "timestamp": "May", "impressions": 57000, "clicks": 14900 },
+            { "timestamp": "Jun", "impressions": 68000, "clicks": 16200 }
+          ],
+          "widgetPerformanceTrends": [
+            {
+              "widgetId": "expat-services",
+              "widgetName": "Destination Services",
+              "trendPoints": [
+                { "timestamp": "Week 1", "value": 78 },
+                { "timestamp": "Week 2", "value": 82 },
+                { "timestamp": "Week 3", "value": 85 },
+                { "timestamp": "Week 4", "value": 86 }
+              ]
+            },
+            {
+              "widgetId": "moving-storage",
+              "widgetName": "Moving & Storage",
+              "trendPoints": [
+                { "timestamp": "Week 1", "value": 65 },
+                { "timestamp": "Week 2", "value": 71 },
+                { "timestamp": "Week 3", "value": 75 },
+                { "timestamp": "Week 4", "value": 78 }
+              ]
+            },
+            {
+              "widgetId": "home-sale",
+              "widgetName": "Home Sale",
+              "trendPoints": [
+                { "timestamp": "Week 1", "value": 52 },
+                { "timestamp": "Week 2", "value": 58 },
+                { "timestamp": "Week 3", "value": 61 },
+                { "timestamp": "Week 4", "value": 64 }
+              ]
+            }
+          ],
+          "geographicEngagementDistribution": [
+            { "regionCode": "NA", "regionName": "North America", "engagementCount": 185000 },
+            { "regionCode": "EU", "regionName": "Europe", "engagementCount": 92000 },
+            { "regionCode": "APAC", "regionName": "Asia Pacific", "engagementCount": 67000 },
+            { "regionCode": "LATAM", "regionName": "Latin America", "engagementCount": 34000 },
+            { "regionCode": "MEA", "regionName": "Middle East & Africa", "engagementCount": 21000 }
+          ],
+          "asOf": "2026-03-13T11:20:00Z"
+        },
+        "activity": [
+          {
+            "id": "a1",
+            "eventType": "vendor_onboarded",
+            "message": "Sirva Mobility Vendor onboarded successfully",
+            "occurredAt": "2026-03-13T11:15:00Z",
+            "actorName": "Admin User",
+            "referenceId": "vendor-778"
+          },
+          {
+            "id": "a2",
+            "eventType": "widget_approved",
+            "message": "Spring Relocation Promo widget approved",
+            "occurredAt": "2026-03-13T10:45:00Z",
+            "actorName": "Admin User",
+            "referenceId": "widget-w-101"
+          },
+          {
+            "id": "a3",
+            "eventType": "widget_submitted",
+            "message": "Corporate Housing widget submitted for approval",
+            "occurredAt": "2026-03-13T09:30:00Z",
+            "actorName": "Vendor User",
+            "referenceId": "widget-w-205"
+          },
+          {
+            "id": "a4",
+            "eventType": "vendor_onboarded",
+            "message": "Global Relocation Services onboarded",
+            "occurredAt": "2026-03-13T08:20:00Z",
+            "actorName": "Admin User",
+            "referenceId": "vendor-779"
+          },
+          {
+            "id": "a5",
+            "eventType": "widget_approved",
+            "message": "Home Sale Assistance widget approved",
+            "occurredAt": "2026-03-12T16:30:00Z",
+            "actorName": "Admin User",
+            "referenceId": "widget-w-198"
+          }
+        ]
+      },
+    "meta": {
+      "timestamp": "2026-03-13T11:20:02Z",
+      "refreshIntervalSeconds": 60,
+      "requestId": "req-mock-001"
+    }
+  },
+  "vendors": [
+    {
+      "id": "vendor-1",
+      "name": "Sirva Mobility",
+      "status": "active",
+      "email": "contact@sirvamobility.com",
+      "onboardedAt": "2026-01-15T10:00:00Z",
+      "tier": "premium",
+      "activeWidgets": 12,
+      "totalImpressions": 145000,
+      "totalClicks": 12400
+    },
+    {
+      "id": "vendor-2",
+      "name": "Global Relocation Services",
+      "status": "active",
+      "email": "info@globalrelocation.com",
+      "onboardedAt": "2026-02-20T14:30:00Z",
+      "tier": "standard",
+      "activeWidgets": 8,
+      "totalImpressions": 89000,
+      "totalClicks": 7200
+    },
+    {
+      "id": "vendor-3",
+      "name": "Corporate Housing Solutions",
+      "status": "pending",
+      "email": "support@corphousing.com",
+      "onboardedAt": "2026-03-10T09:15:00Z",
+      "tier": "standard",
+      "activeWidgets": 0,
+      "totalImpressions": 0,
+      "totalClicks": 0
+    },
+    {
+      "id": "vendor-4",
+      "name": "International Moving Company",
+      "status": "active",
+      "email": "hello@intlmoving.com",
+      "onboardedAt": "2026-02-05T11:00:00Z",
+      "tier": "premium",
+      "activeWidgets": 15,
+      "totalImpressions": 198000,
+      "totalClicks": 15600
+    },
+    {
+      "id": "vendor-5",
+      "name": "HomeSale Express",
+      "status": "suspended",
+      "email": "contact@homesaleexpress.com",
+      "onboardedAt": "2026-01-28T13:45:00Z",
+      "tier": "standard",
+      "activeWidgets": 0,
+      "totalImpressions": 23000,
+      "totalClicks": 1200
+    }
+  ],
+  "widgets": [
+    {
+      "id": "w-101",
+      "name": "Spring Relocation Promo",
+      "status": "approved",
+      "vendorId": "vendor-1",
+      "createdAt": "2026-03-01T10:00:00Z",
+      "approvedAt": "2026-03-13T10:45:00Z",
+      "description": "Special spring promotion for relocation services",
+      "landingPageId": "lp-201",
+      "impressions": 5400,
+      "clicks": 432,
+      "leads": 28,
+      "conversions": 5
+    },
+    {
+      "id": "w-102",
+      "name": "Corporate Housing Special",
+      "status": "pending",
+      "vendorId": "vendor-2",
+      "createdAt": "2026-03-13T09:30:00Z",
+      "approvedAt": null,
+      "description": "Discounted rates for corporate housing",
+      "landingPageId": "lp-202",
+      "impressions": 0,
+      "clicks": 0,
+      "leads": 0,
+      "conversions": 0
+    },
+    {
+      "id": "w-103",
+      "name": "Moving & Storage Bundle",
+      "status": "approved",
+      "vendorId": "vendor-4",
+      "createdAt": "2026-02-28T14:20:00Z",
+      "approvedAt": "2026-03-02T11:30:00Z",
+      "description": "Complete moving and storage solution",
+      "landingPageId": "lp-203",
+      "impressions": 8200,
+      "clicks": 656,
+      "leads": 45,
+      "conversions": 12
+    },
+    {
+      "id": "w-104",
+      "name": "Home Sale Assistance",
+      "status": "approved",
+      "vendorId": "vendor-1",
+      "createdAt": "2026-03-05T09:15:00Z",
+      "approvedAt": "2026-03-12T16:30:00Z",
+      "description": "Expert assistance for home sales",
+      "landingPageId": "lp-204",
+      "impressions": 3800,
+      "clicks": 304,
+      "leads": 22,
+      "conversions": 4
+    },
+    {
+      "id": "w-105",
+      "name": "Destination Services Premium",
+      "status": "approved",
+      "vendorId": "vendor-1",
+      "createdAt": "2026-02-15T13:45:00Z",
+      "approvedAt": "2026-02-18T10:00:00Z",
+      "description": "Premium destination services package",
+      "landingPageId": "lp-205",
+      "impressions": 12000,
+      "clicks": 960,
+      "leads": 78,
+      "conversions": 18
+    },
+    {
+      "id": "w-106",
+      "name": "International Relocation",
+      "status": "draft",
+      "vendorId": "vendor-4",
+      "createdAt": "2026-03-12T16:00:00Z",
+      "approvedAt": null,
+      "description": "Complete international relocation services",
+      "landingPageId": null,
+      "impressions": 0,
+      "clicks": 0,
+      "leads": 0,
+      "conversions": 0
+    },
+    {
+      "id": "w-107",
+      "name": "Pet Relocation Services",
+      "status": "rejected",
+      "vendorId": "vendor-2",
+      "createdAt": "2026-03-08T11:20:00Z",
+      "approvedAt": null,
+      "description": "Pet relocation and care services",
+      "landingPageId": "lp-207",
+      "impressions": 0,
+      "clicks": 0,
+      "leads": 0,
+      "conversions": 0
+    },
+    {
+      "id": "w-108",
+      "name": "Temporary Housing",
+      "status": "approved",
+      "vendorId": "vendor-2",
+      "createdAt": "2026-02-22T10:30:00Z",
+      "approvedAt": "2026-02-25T14:15:00Z",
+      "description": "Short-term temporary housing solutions",
+      "landingPageId": "lp-208",
+      "impressions": 6700,
+      "clicks": 536,
+      "leads": 34,
+      "conversions": 8
+    }
+  ],
+  "landingPages": [
+    {
+      "id": "lp-201",
+      "widgetId": "w-101",
+      "vendorId": "vendor-1",
+      "title": "Spring Relocation Special Offer",
+      "status": "published",
+      "url": "/landing/spring-relocation-2026",
+      "content": "Get 20% off on all relocation services this spring season",
+      "createdAt": "2026-03-01T10:00:00Z",
+      "publishedAt": "2026-03-13T10:45:00Z"
+    },
+    {
+      "id": "lp-202",
+      "widgetId": "w-102",
+      "vendorId": "vendor-2",
+      "title": "Corporate Housing Solutions",
+      "status": "draft",
+      "url": "/landing/corporate-housing",
+      "content": "Premium corporate housing for your business needs",
+      "createdAt": "2026-03-13T09:30:00Z",
+      "publishedAt": null
+    },
+    {
+      "id": "lp-203",
+      "widgetId": "w-103",
+      "vendorId": "vendor-4",
+      "title": "Complete Moving Package",
+      "status": "published",
+      "url": "/landing/moving-storage-bundle",
+      "content": "All-in-one moving and storage solution",
+      "createdAt": "2026-02-28T14:20:00Z",
+      "publishedAt": "2026-03-02T11:30:00Z"
+    },
+    {
+      "id": "lp-204",
+      "widgetId": "w-104",
+      "vendorId": "vendor-1",
+      "title": "Home Sale Expert Services",
+      "status": "published",
+      "url": "/landing/home-sale-assistance",
+      "content": "Expert guidance for selling your home quickly",
+      "createdAt": "2026-03-05T09:15:00Z",
+      "publishedAt": "2026-03-12T16:30:00Z"
+    },
+    {
+      "id": "lp-205",
+      "widgetId": "w-105",
+      "vendorId": "vendor-1",
+      "title": "Destination Services Premium",
+      "status": "published",
+      "url": "/landing/destination-services",
+      "content": "Comprehensive destination services for seamless relocation",
+      "createdAt": "2026-02-15T13:45:00Z",
+      "publishedAt": "2026-02-18T10:00:00Z"
+    },
+    {
+      "id": "lp-207",
+      "widgetId": "w-107",
+      "vendorId": "vendor-2",
+      "title": "Pet Relocation Care",
+      "status": "draft",
+      "url": "/landing/pet-relocation",
+      "content": "Safe and comfortable pet relocation services",
+      "createdAt": "2026-03-08T11:20:00Z",
+      "publishedAt": null
+    },
+    {
+      "id": "lp-208",
+      "widgetId": "w-108",
+      "vendorId": "vendor-2",
+      "title": "Temporary Housing Solutions",
+      "status": "published",
+      "url": "/landing/temporary-housing",
+      "content": "Flexible short-term housing options",
+      "createdAt": "2026-02-22T10:30:00Z",
+      "publishedAt": "2026-02-25T14:15:00Z"
+    }
+  ],
+  "analytics": [
+    {
+      "id": "analytics-1",
+      "date": "2026-03-13",
+      "widgetId": "w-101",
+      "vendorId": "vendor-1",
+      "impressions": 1200,
+      "clicks": 96,
+      "leads": 8,
+      "conversions": 2
+    },
+    {
+      "id": "analytics-2",
+      "date": "2026-03-13",
+      "widgetId": "w-103",
+      "vendorId": "vendor-4",
+      "impressions": 1800,
+      "clicks": 144,
+      "leads": 12,
+      "conversions": 3
+    }
+  ],
+  "approvals": [
+    {
+      "id": "approval-1",
+      "widgetId": "w-102",
+      "vendorId": "vendor-2",
+      "status": "pending",
+      "submittedAt": "2026-03-13T09:30:00Z",
+      "submittedBy": "Vendor User",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "comments": null
+    },
+    {
+      "id": "approval-2",
+      "widgetId": "w-101",
+      "vendorId": "vendor-1",
+      "status": "approved",
+      "submittedAt": "2026-03-01T10:00:00Z",
+      "submittedBy": "Vendor User",
+      "reviewedAt": "2026-03-13T10:45:00Z",
+      "reviewedBy": "Admin User",
+      "comments": "Approved for publication"
+    },
+    {
+      "id": "approval-3",
+      "widgetId": "w-107",
+      "vendorId": "vendor-2",
+      "status": "rejected",
+      "submittedAt": "2026-03-08T11:20:00Z",
+      "submittedBy": "Vendor User",
+      "reviewedAt": "2026-03-09T14:30:00Z",
+      "reviewedBy": "Admin User",
+      "comments": "Content does not meet brand guidelines"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-1",
+      "name": "North America Premium Users",
+      "description": "Target premium users in North America",
+      "conditions": {
+        "region": ["NA"],
+        "userTier": ["premium"],
+        "active": true
+      },
+      "priority": 10,
+      "createdAt": "2026-01-20T10:00:00Z",
+      "createdBy": "Admin User"
+    },
+    {
+      "id": "rule-2",
+      "name": "Corporate Relocation Campaign",
+      "description": "Target corporate relocation users",
+      "conditions": {
+        "segment": ["corporate"],
+        "active": true
+      },
+      "priority": 8,
+      "createdAt": "2026-02-10T11:30:00Z",
+      "createdBy": "Admin User"
+    },
+    {
+      "id": "rule-3",
+      "name": "Spring Season Promotion",
+      "description": "Active during spring season",
+      "conditions": {
+        "dateRange": {
+          "start": "2026-03-01",
+          "end": "2026-05-31"
+        },
+        "active": true
+      },
+      "priority": 5,
+      "createdAt": "2026-02-28T09:00:00Z",
+      "createdBy": "Admin User"
+    }
+  ]
+}

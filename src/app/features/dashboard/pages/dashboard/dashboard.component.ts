@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { DashboardService } from '../../../../core/services/dashboard.service';
@@ -33,7 +33,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject<void>();
 
-  constructor(private readonly dashboardService: DashboardService) {}
+  constructor(
+    private readonly dashboardService: DashboardService,
+    private readonly cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.dashboardService
@@ -56,6 +59,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       activityState: 'loading',
       errorMessage: null,
     };
+    this.cdr.markForCheck();
     this.dashboardService.refreshNow();
   }
 
@@ -87,6 +91,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         isManualRefreshInProgress: false,
         errorMessage: message,
       };
+      this.cdr.markForCheck();
       return;
     }
 
@@ -100,6 +105,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       lastUpdatedAt: response.meta.timestamp,
       errorMessage: partialSections.size > 0 ? 'Some sections failed to refresh. Retry to update.' : null,
     };
+    this.cdr.markForCheck();
   }
 
   private patchData(data: DashboardSummaryData): void {
