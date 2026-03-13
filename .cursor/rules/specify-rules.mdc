@@ -1,0 +1,35 @@
+﻿---
+description: Project Development Guidelines
+globs: ["**/*"]
+alwaysApply: true
+---
+# Sirva-Dashbaord-Demo-POC Development Guidelines
+
+Auto-generated from all feature plans. Last updated: 2026-03-13
+
+## Active Technologies
+
+- TypeScript 4.6+ (Angular 14) + Angular 14, Angular Router, RxJS, Chart.js (ng2-charts or equivalent), Angular Material or custom design system (main)
+
+## Project Structure
+
+```text
+backend/
+frontend/
+tests/
+```
+
+## Commands
+
+npm test; npm run lint
+
+## Code Style
+
+TypeScript 4.6+ (Angular 14): Follow standard conventions
+
+## Recent Changes
+
+- main: Added TypeScript 4.6+ (Angular 14) + Angular 14, Angular Router, RxJS, Chart.js (ng2-charts or equivalent), Angular Material or custom design system
+
+<!-- MANUAL ADDITIONS START -->
+<!-- MANUAL ADDITIONS END -->
