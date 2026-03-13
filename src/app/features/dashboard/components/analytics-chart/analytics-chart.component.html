@@ -1,0 +1,71 @@
+<section class="analytics-panel" [attr.aria-busy]="loading">
+  <h3>Performance Trends</h3>
+  <p class="panel-subtitle">Widget engagement over time</p>
+
+  <div *ngIf="loading" class="skeleton-wrap" aria-live="polite">
+    <div class="skeleton skeleton-lg"></div>
+    <div class="skeleton-grid">
+      <div class="skeleton skeleton-md"></div>
+      <div class="skeleton skeleton-md"></div>
+    </div>
+  </div>
+  <p *ngIf="!loading && errorMessage" class="error" aria-live="assertive">
+    {{ errorMessage }}
+  </p>
+  <p
+    *ngIf="!loading && !errorMessage && analytics && analytics.impressionsVsClicks.length === 0"
+    class="empty"
+  >
+    No analytics data available.
+  </p>
+
+  <div
+    *ngIf="
+      !loading &&
+      !errorMessage &&
+      analytics as data
+    "
+  >
+    <div class="line-chart-card">
+      <div class="line-chart-toggle">
+        <span class="pill active">Impressions</span>
+        <span class="pill">Clicks</span>
+      </div>
+      <svg class="line-chart" viewBox="0 0 720 220" preserveAspectRatio="none">
+        <polyline
+          class="impression-line"
+          [attr.points]="getLinePoints(data.impressionsVsClicks, 'impressions')"
+        ></polyline>
+        <polyline
+          class="click-line"
+          [attr.points]="getLinePoints(data.impressionsVsClicks, 'clicks')"
+        ></polyline>
+      </svg>
+    </div>
+
+    <div class="analytics-grid">
+      <div class="chart-block">
+        <h4>Lead Capture Distribution</h4>
+        <p class="small">Performance by service category</p>
+        <ul>
+          <li *ngFor="let trend of data.widgetPerformanceTrends">
+            <span>{{ trend.widgetName }}</span>
+            <strong>{{ trend.trendPoints[trend.trendPoints.length - 1].value || 0 }}</strong>
+          </li>
+        </ul>
+      </div>
+
+      <div class="chart-block">
+        <h4>Geographic Performance</h4>
+        <p class="small">Regional engagement metrics</p>
+        <div class="geo-row" *ngFor="let geo of data.geographicEngagementDistribution">
+          <span>{{ geo.regionName }}</span>
+          <div class="bar-wrap">
+            <div class="bar" [style.width]="geoWidth(geo, data.geographicEngagementDistribution)"></div>
+          </div>
+          <strong>{{ geo.engagementCount }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+<article class="kpi-card" [attr.aria-busy]="loading">
+  <div class="kpi-head">
+    <h3 class="kpi-title">{{ title }}</h3>
+    <span class="kpi-icon"></span>
+  </div>
+
+  <p *ngIf="loading" class="kpi-loading">Loading...</p>
+  <p *ngIf="!loading && errorMessage" class="kpi-error">{{ errorMessage }}</p>
+  <p *ngIf="!loading && !errorMessage" class="kpi-value">
+    {{ value ?? 0 }}
+  </p>
+  <small *ngIf="updatedAt && !loading" class="kpi-updated-at">
+    Updated {{ updatedAt | date : 'MMM d, h:mm a' }}
+  </small>
+</article>
