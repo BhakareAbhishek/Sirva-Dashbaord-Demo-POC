@@ -1,0 +1,15 @@
+{
+  "/api/dashboard/summary": "/dashboardSummary",
+  "/api/vendors": "/vendors",
+  "/api/vendors/:id": "/vendors/:id",
+  "/api/widgets": "/widgets",
+  "/api/widgets/:id": "/widgets/:id",
+  "/api/landing-pages": "/landingPages",
+  "/api/landing-pages/:id": "/landingPages/:id",
+  "/api/analytics": "/analytics",
+  "/api/analytics/:id": "/analytics/:id",
+  "/api/approvals": "/approvals",
+  "/api/approvals/:id": "/approvals/:id",
+  "/api/rules": "/rules",
+  "/api/rules/:id": "/rules/:id"
+}
