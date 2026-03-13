@@ -1,0 +1,126 @@
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  cursor: default;
+
+  // Interactive state
+  &.interactive {
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+  }
+
+  // Updating state
+  &.updating {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // Status Icons
+  .status-icon {
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .status-label {
+    line-height: 1;
+  }
+
+  // Loading Spinner
+  .spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  // Status-specific colors
+  &.status-active {
+    background-color: #d1fae5;
+    color: #065f46;
+    border-color: #6ee7b7;
+
+    &.interactive:hover:not(:disabled) {
+      background-color: #a7f3d0;
+      border-color: #34d399;
+    }
+  }
+
+  &.status-inactive {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border-color: #d1d5db;
+
+    &.interactive:hover:not(:disabled) {
+      background-color: #e5e7eb;
+      border-color: #9ca3af;
+    }
+  }
+
+  &.status-under-review {
+    background-color: #fef3c7;
+    color: #92400e;
+    border-color: #fde68a;
+
+    &.interactive:hover:not(:disabled) {
+      background-color: #fde047;
+      border-color: #facc15;
+    }
+  }
+
+  &.status-suspended {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-color: #fca5a5;
+
+    &.interactive:hover:not(:disabled) {
+      background-color: #fecaca;
+      border-color: #f87171;
+    }
+  }
+
+  &.status-default {
+    background-color: #eff6ff;
+    color: #1e40af;
+    border-color: #bfdbfe;
+
+    &.interactive:hover:not(:disabled) {
+      background-color: #dbeafe;
+      border-color: #93c5fd;
+    }
+  }
+}

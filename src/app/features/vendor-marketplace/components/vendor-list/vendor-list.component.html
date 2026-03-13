@@ -1,0 +1,92 @@
+<div class="vendor-table-container">
+  <table class="vendor-table" role="table" aria-label="Vendor list">
+    <!-- Table Header -->
+    <thead>
+      <tr role="row">
+        <th scope="col" role="columnheader">Vendor Name</th>
+        <th scope="col" role="columnheader">Status</th>
+        <th scope="col" role="columnheader">Active Widgets</th>
+        <th scope="col" role="columnheader">Eligibility</th>
+        <th scope="col" role="columnheader">Services</th>
+        <th scope="col" role="columnheader">Last Activity</th>
+        <th scope="col" role="columnheader" class="actions-column">Actions</th>
+      </tr>
+    </thead>
+
+    <!-- Table Body -->
+    <tbody>
+      <tr 
+        *ngFor="let vendor of vendors; trackBy: trackByVendorId"
+        role="row"
+        class="vendor-row">
+        
+        <!-- Vendor Name & Company -->
+        <td role="cell" class="vendor-name-cell">
+          <div class="vendor-info">
+            <div class="vendor-name">{{ vendor.name }}</div>
+            <div class="vendor-company">{{ vendor.companyName }}</div>
+          </div>
+        </td>
+
+        <!-- Status Badge with Toggle -->
+        <td role="cell">
+          <app-vendor-status-toggle
+            [vendorId]="vendor.id"
+            [currentStatus]="vendor.status"
+            (statusChange)="onStatusToggle($event)">
+          </app-vendor-status-toggle>
+        </td>
+
+        <!-- Active Widgets Count -->
+        <td role="cell" class="widget-count-cell">
+          <div class="widget-count">
+            <span class="count-number">{{ vendor.activeWidgetCount }}</span>
+            <span class="count-label">widgets</span>
+          </div>
+        </td>
+
+        <!-- Eligibility Badge -->
+        <td role="cell">
+          <span 
+            class="eligibility-badge"
+            [ngClass]="getEligibilityClass(vendor.isEligible)"
+            [attr.aria-label]="'Eligibility status: ' + getEligibilityLabel(vendor.isEligible)">
+            {{ getEligibilityLabel(vendor.isEligible) }}
+          </span>
+        </td>
+
+        <!-- Services -->
+        <td role="cell" class="services-cell">
+          <span 
+            class="services-text"
+            [title]="vendor.services.join(', ')">
+            {{ getServicesList(vendor.services) }}
+          </span>
+        </td>
+
+        <!-- Last Activity -->
+        <td role="cell" class="last-activity-cell">
+          <span 
+            class="activity-date"
+            [title]="vendor.lastActivity || 'No activity recorded'">
+            {{ formatDate(vendor.lastActivity) }}
+          </span>
+        </td>
+
+        <!-- Action Buttons -->
+        <td role="cell" class="actions-cell">
+          <div class="action-buttons">
+            <button
+              class="btn-view"
+              (click)="onViewVendor(vendor.id)"
+              [attr.aria-label]="'View details for ' + vendor.name"
+              title="View vendor details">
+              <span class="icon">👁</span>
+              <span class="button-text">View</span>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

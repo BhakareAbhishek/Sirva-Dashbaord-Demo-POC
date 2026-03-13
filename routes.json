@@ -2,6 +2,7 @@
   "/api/dashboard/summary": "/dashboardSummary",
   "/api/vendors": "/vendors",
   "/api/vendors/:id": "/vendors/:id",
+  "/api/vendors/:id/status-history": "/vendorStatusHistory?vendorId=:id",
   "/api/widgets": "/widgets",
   "/api/widgets/:id": "/widgets/:id",
   "/api/landing-pages": "/landingPages",

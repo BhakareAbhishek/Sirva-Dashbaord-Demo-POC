@@ -1,0 +1,191 @@
+<form [formGroup]="vendorForm" (ngSubmit)="onSubmit()" class="vendor-form" novalidate>
+  <!-- Form Header -->
+  <div class="form-header">
+    <h2 class="form-title">{{ isEditMode ? 'Edit Vendor' : 'Add New Vendor' }}</h2>
+    <p class="form-subtitle">
+      {{ isEditMode ? 'Update vendor information and settings' : 'Register a new vendor in the marketplace' }}
+    </p>
+  </div>
+
+  <!-- Form Fields -->
+  <div class="form-body">
+    <!-- Vendor Name -->
+    <div class="form-field">
+      <label for="vendor-name" class="field-label">
+        Vendor Name <span class="required-indicator">*</span>
+      </label>
+      <input
+        id="vendor-name"
+        type="text"
+        formControlName="name"
+        class="field-input"
+        [class.field-error]="hasError('name', 'required') || hasError('name', 'maxlength')"
+        placeholder="Enter vendor name"
+        maxlength="{{ limits.name }}"
+        aria-required="true"
+        [attr.aria-invalid]="hasError('name', 'required') || hasError('name', 'maxlength')"
+        [attr.aria-describedby]="hasError('name', 'required') || hasError('name', 'maxlength') ? 'name-error' : null">
+      <div class="field-meta">
+        <span id="name-error" class="error-message" *ngIf="getErrorMessage('name')" role="alert">
+          {{ getErrorMessage('name') }}
+        </span>
+        <span class="char-counter" [class.char-limit-warning]="getRemainingChars('name') < 20">
+          {{ getRemainingChars('name') }} characters remaining
+        </span>
+      </div>
+    </div>
+
+    <!-- Company Name -->
+    <div class="form-field">
+      <label for="company-name" class="field-label">
+        Company Name <span class="required-indicator">*</span>
+      </label>
+      <input
+        id="company-name"
+        type="text"
+        formControlName="companyName"
+        class="field-input"
+        [class.field-error]="hasError('companyName', 'required') || hasError('companyName', 'maxlength')"
+        placeholder="Enter company name"
+        maxlength="{{ limits.companyName }}"
+        aria-required="true"
+        [attr.aria-invalid]="hasError('companyName', 'required') || hasError('companyName', 'maxlength')"
+        [attr.aria-describedby]="hasError('companyName', 'required') || hasError('companyName', 'maxlength') ? 'company-error' : null">
+      <div class="field-meta">
+        <span id="company-error" class="error-message" *ngIf="getErrorMessage('companyName')" role="alert">
+          {{ getErrorMessage('companyName') }}
+        </span>
+        <span class="char-counter" [class.char-limit-warning]="getRemainingChars('companyName') < 30">
+          {{ getRemainingChars('companyName') }} characters remaining
+        </span>
+      </div>
+    </div>
+
+    <!-- Email & Phone Row -->
+    <div class="form-row">
+      <!-- Email -->
+      <div class="form-field">
+        <label for="vendor-email" class="field-label">
+          Email Address <span class="required-indicator">*</span>
+        </label>
+        <input
+          id="vendor-email"
+          type="email"
+          formControlName="email"
+          class="field-input"
+          [class.field-error]="hasError('email', 'required') || hasError('email', 'email') || hasError('email', 'emailTaken')"
+          [class.field-validating]="vendorForm.get('email')?.pending"
+          placeholder="vendor@company.com"
+          aria-required="true"
+          [attr.aria-invalid]="hasError('email', 'required') || hasError('email', 'email') || hasError('email', 'emailTaken')"
+          [attr.aria-describedby]="getErrorMessage('email') ? 'email-error' : null">
+        <div class="field-meta">
+          <span id="email-error" class="error-message" *ngIf="getErrorMessage('email')" role="alert">
+            {{ getErrorMessage('email') }}
+          </span>
+          <span class="validating-message" *ngIf="vendorForm.get('email')?.pending">
+            Checking availability...
+          </span>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="form-field">
+        <label for="vendor-phone" class="field-label">
+          Phone Number <span class="required-indicator">*</span>
+        </label>
+        <input
+          id="vendor-phone"
+          type="tel"
+          formControlName="phone"
+          class="field-input"
+          [class.field-error]="hasError('phone', 'required') || hasError('phone', 'invalidPhone')"
+          placeholder="(123) 456-7890"
+          aria-required="true"
+          [attr.aria-invalid]="hasError('phone', 'required') || hasError('phone', 'invalidPhone')"
+          [attr.aria-describedby]="getErrorMessage('phone') ? 'phone-error' : null">
+        <div class="field-meta">
+          <span id="phone-error" class="error-message" *ngIf="getErrorMessage('phone')" role="alert">
+            {{ getErrorMessage('phone') }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-field">
+      <label for="vendor-description" class="field-label">
+        Description
+      </label>
+      <textarea
+        id="vendor-description"
+        formControlName="description"
+        class="field-textarea"
+        [class.field-error]="hasError('description', 'maxlength')"
+        placeholder="Provide a brief description of the vendor's services and capabilities..."
+        maxlength="{{ limits.description }}"
+        rows="4"
+        [attr.aria-invalid]="hasError('description', 'maxlength')"
+        [attr.aria-describedby]="hasError('description', 'maxlength') ? 'description-error' : null">
+      </textarea>
+      <div class="field-meta">
+        <span id="description-error" class="error-message" *ngIf="getErrorMessage('description')" role="alert">
+          {{ getErrorMessage('description') }}
+        </span>
+        <span class="char-counter" [class.char-limit-warning]="getRemainingChars('description') < 100">
+          {{ getRemainingChars('description') }} characters remaining
+        </span>
+      </div>
+    </div>
+
+    <!-- Services Selection -->
+    <div class="form-field">
+      <label class="field-label">
+        Services Offered <span class="required-indicator">*</span>
+      </label>
+      <p class="field-hint">Select at least one service</p>
+      
+      <div class="services-grid" role="group" aria-label="Select services">
+        <button
+          *ngFor="let service of availableServices"
+          type="button"
+          class="service-chip"
+          [class.service-selected]="isServiceSelected(service)"
+          (click)="toggleService(service)"
+          [attr.aria-pressed]="isServiceSelected(service)">
+          <span class="chip-icon" aria-hidden="true">
+            {{ isServiceSelected(service) ? '✓' : '+' }}
+          </span>
+          <span class="chip-label">{{ service }}</span>
+        </button>
+      </div>
+      
+      <div class="field-meta">
+        <span class="error-message" *ngIf="hasError('services', 'minlength')" role="alert">
+          {{ getErrorMessage('services') }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Actions -->
+  <div class="form-actions">
+    <button
+      type="button"
+      class="btn-cancel"
+      (click)="onCancel()"
+      [disabled]="isSubmitting">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="btn-submit"
+      [disabled]="vendorForm.invalid || isSubmitting || vendorForm.pending">
+      <span *ngIf="!isSubmitting">{{ isEditMode ? 'Update Vendor' : 'Create Vendor' }}</span>
+      <span *ngIf="isSubmitting" class="loading-text">
+        <span class="spinner" aria-hidden="true"></span>
+        {{ isEditMode ? 'Updating...' : 'Creating...' }}
+      </span>
+    </button>
+  </div>
+</form>

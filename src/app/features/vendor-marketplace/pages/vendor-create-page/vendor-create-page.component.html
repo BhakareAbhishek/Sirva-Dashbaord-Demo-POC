@@ -1,0 +1,47 @@
+<section class="dashboard-shell">
+  <aside class="sidebar">
+    <h1 class="brand">sirva</h1>
+    <nav aria-label="Main dashboard navigation">
+      <a class="nav-item" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+      <a class="nav-item" routerLink="/vendor-marketplace" routerLinkActive="active">Vendor Marketplace</a>
+      <a class="nav-item" href="javascript:void(0)">Widget Library</a>
+      <a class="nav-item" href="javascript:void(0)">Publishing Workflow</a>
+      <a class="nav-item" href="javascript:void(0)">Landing Pages</a>
+      <a class="nav-item" href="javascript:void(0)">Rules Engine</a>
+      <a class="nav-item" href="javascript:void(0)">Analytics</a>
+      <a class="nav-item" href="javascript:void(0)">Governance</a>
+    </nav>
+
+    <div class="profile-card">
+      <div class="avatar">AD</div>
+      <div class="profile-meta">
+        <div class="name">Admin User</div>
+        <div class="role">Platform Administrator</div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="vendor-create-page">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>Create New Vendor</h1>
+      <p class="subtitle">Register a new vendor in the marketplace</p>
+    </div>
+
+    <!-- Error Alert -->
+    <div *ngIf="errorMessage" class="error-alert" role="alert" aria-live="assertive">
+      <span class="error-icon">⚠</span>
+      <div class="error-content">
+        <strong>Creation Failed</strong>
+        <p>{{ errorMessage }}</p>
+      </div>
+    </div>
+
+    <!-- Vendor Form -->
+    <app-vendor-form
+      [vendor]="null"
+      (submitForm)="onSubmit($event)"
+      (cancelForm)="onCancel()">
+    </app-vendor-form>
+  </div>
+</section>

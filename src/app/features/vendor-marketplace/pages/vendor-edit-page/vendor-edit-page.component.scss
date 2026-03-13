@@ -1,0 +1,238 @@
+.dashboard-shell {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  min-height: 100vh;
+  background: #f4f4f8;
+}
+
+.sidebar {
+  background: #ffffff;
+  border-right: 1px solid #ececf2;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  margin: 4px 8px 18px;
+  color: #7c3aed;
+  font-size: 28px;
+  text-transform: lowercase;
+}
+
+.nav-item {
+  display: block;
+  padding: 8px 10px;
+  margin: 6px 0;
+  border-radius: 8px;
+  color: #667085;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.nav-item.active {
+  background: #f2ebff;
+  color: #7c3aed;
+  font-weight: 600;
+}
+
+.profile-card {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ececf2;
+  border-radius: 10px;
+  background: #fafaff;
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background: #ede9fe;
+    color: #6d28d9;
+    font-size: 11px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+  }
+
+  .name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #101828;
+  }
+
+  .role {
+    font-size: 11px;
+    color: #667085;
+  }
+}
+
+.vendor-edit-page {
+  padding: 24px;
+  max-width: 920px;
+  margin: 0;
+
+  .page-header {
+    margin-bottom: 24px;
+
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 0 0 8px 0;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #6b7280;
+      margin: 0;
+    }
+  }
+
+  .loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 48px 24px;
+    color: #6b7280;
+    font-size: 14px;
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d1d5db;
+      border-top-color: #3b82f6;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  .error-state {
+    padding: 24px;
+    background-color: #fef2f2;
+    border: 1px solid #fca5a5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .error-message {
+      display: flex;
+      gap: 16px;
+
+      .error-icon {
+        font-size: 24px;
+        color: #dc2626;
+        flex-shrink: 0;
+      }
+
+      .error-content {
+        flex: 1;
+
+        strong {
+          display: block;
+          font-size: 14px;
+          font-weight: 600;
+          color: #991b1b;
+          margin-bottom: 4px;
+        }
+
+        p {
+          font-size: 13px;
+          color: #991b1b;
+          margin: 0;
+        }
+      }
+    }
+
+    .btn-retry {
+      background-color: #10b981;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #059669;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+      }
+    }
+  }
+
+  .error-alert {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background-color: #fef2f2;
+    border: 1px solid #fca5a5;
+    border-radius: 8px;
+    margin-bottom: 24px;
+
+    .error-icon {
+      font-size: 24px;
+      color: #dc2626;
+      flex-shrink: 0;
+    }
+
+    .error-content {
+      flex: 1;
+
+      strong {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #991b1b;
+        margin-bottom: 4px;
+      }
+
+      p {
+        font-size: 13px;
+        color: #991b1b;
+        margin: 0;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+
+    .error-state {
+      flex-direction: column;
+      gap: 16px;
+
+      .btn-retry {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .dashboard-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid #ececf2;
+  }
+}

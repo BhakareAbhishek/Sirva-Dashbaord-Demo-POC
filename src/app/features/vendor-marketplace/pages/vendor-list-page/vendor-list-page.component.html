@@ -1,0 +1,139 @@
+<section class="dashboard-shell">
+  <aside class="sidebar">
+    <h1 class="brand">sirva</h1>
+    <nav aria-label="Main dashboard navigation">
+      <a class="nav-item" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+      <a class="nav-item" routerLink="/vendor-marketplace" routerLinkActive="active">Vendor Marketplace</a>
+      <a class="nav-item" href="javascript:void(0)">Widget Library</a>
+      <a class="nav-item" href="javascript:void(0)">Publishing Workflow</a>
+      <a class="nav-item" href="javascript:void(0)">Landing Pages</a>
+      <a class="nav-item" href="javascript:void(0)">Rules Engine</a>
+      <a class="nav-item" href="javascript:void(0)">Analytics</a>
+      <a class="nav-item" href="javascript:void(0)">Governance</a>
+    </nav>
+
+    <div class="profile-card">
+      <div class="avatar">AD</div>
+      <div class="profile-meta">
+        <div class="name">Admin User</div>
+        <div class="role">Platform Administrator</div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="vendor-marketplace-page">
+    <!-- Header -->
+    <div class="page-header">
+      <div class="header-content">
+        <h1>Vendor Marketplace</h1>
+        <p class="subtitle">Multi-tenant vendor management and eligibility oversight</p>
+      </div>
+      <button 
+        class="btn-primary btn-add-vendor" 
+        (click)="onAddVendor()"
+        aria-label="Add new vendor">
+        <span class="icon">+</span> Add Vendor
+      </button>
+    </div>
+
+    <!-- Search and Filter Controls -->
+    <app-vendor-search-filter
+      (searchChange)="onSearchChange($event)"
+      (filterChange)="onFilterChange($event)">
+    </app-vendor-search-filter>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="loading-state" role="status" aria-live="polite">
+      <div class="skeleton-table">
+        <div class="skeleton-row" *ngFor="let i of [1,2,3,4,5]">
+          <div class="skeleton-cell"></div>
+          <div class="skeleton-cell"></div>
+          <div class="skeleton-cell"></div>
+          <div class="skeleton-cell"></div>
+          <div class="skeleton-cell"></div>
+          <div class="skeleton-cell"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error && !isLoading" class="error-state" role="alert" aria-live="assertive">
+      <div class="error-message">
+        <span class="error-icon">⚠</span>
+        <span>{{ error }}</span>
+      </div>
+      <button class="btn-retry" (click)="onRetry()">
+        Retry
+      </button>
+    </div>
+
+    <!-- Vendor List Table -->
+    <div *ngIf="!isLoading && !error" class="vendor-list-container">
+      <!-- Empty State -->
+      <div *ngIf="vendors.length === 0" class="empty-state">
+        <p>No vendors found</p>
+        <p class="empty-hint">Try adjusting your search or filter criteria</p>
+      </div>
+
+      <!-- Vendor Table -->
+      <app-vendor-list
+        *ngIf="vendors.length > 0"
+        [vendors]="vendors"
+        (viewVendor)="onViewVendor($event)"
+        (statusChange)="onStatusChange($event)">
+      </app-vendor-list>
+
+      <!-- Pagination Controls -->
+      <div *ngIf="vendors.length > 0" class="pagination-controls">
+        <div class="pagination-info">
+          Showing {{ (pagination.currentPage - 1) * pagination.pageSize + 1 }} 
+          to {{ Math.min(pagination.currentPage * pagination.pageSize, pagination.totalItems) }} 
+          of {{ pagination.totalItems }} vendors
+        </div>
+
+        <div class="pagination-actions">
+          <button 
+            class="btn-icon" 
+            [disabled]="!pagination.hasPrevious"
+            (click)="onPreviousPage()"
+            aria-label="Previous page">
+            ←
+          </button>
+
+          <span class="page-indicator">
+            Page {{ pagination.currentPage }} of {{ pagination.totalPages }}
+          </span>
+
+          <button 
+            class="btn-icon" 
+            [disabled]="!pagination.hasNext"
+            (click)="onNextPage()"
+            aria-label="Next page">
+            →
+          </button>
+
+          <select 
+            class="page-size-selector"
+            [value]="pageSize"
+            (change)="onPageSizeChange(+$any($event.target).value)"
+            aria-label="Items per page">
+            <option [value]="20">20 per page</option>
+            <option [value]="50">50 per page</option>
+            <option [value]="100">100 per page</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Multi-Tenant Isolation Notice -->
+    <div class="isolation-notice" role="note">
+      <span class="notice-icon">ℹ</span>
+      <span class="notice-text">
+        <strong>Multi-Tenant Isolation Enforced</strong>
+        Each vendor operates in an isolated environment with scoped data access. 
+        Vendors can only view and manage their own widgets and analytics. 
+        Cross-tenant data access is prohibited by platform governance.
+      </span>
+    </div>
+  </div>
+</section>

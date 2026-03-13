@@ -1,0 +1,25 @@
+<button
+  class="status-badge"
+  [ngClass]="getStatusClass()"
+  [disabled]="!interactive || isUpdating"
+  [class.interactive]="interactive"
+  [class.updating]="isUpdating"
+  (click)="onToggleStatus()"
+  [attr.aria-label]="'Current status: ' + getStatusLabel() + (interactive ? '. Click to toggle.' : '')"
+  [attr.aria-busy]="isUpdating"
+  type="button">
+  
+  <!-- Loading Spinner -->
+  <span *ngIf="isUpdating" class="spinner" aria-hidden="true"></span>
+  
+  <!-- Status Icon -->
+  <span class="status-icon" aria-hidden="true">
+    <span *ngIf="currentStatus === VendorStatus.Active && !isUpdating">●</span>
+    <span *ngIf="currentStatus === VendorStatus.Inactive && !isUpdating">○</span>
+    <span *ngIf="currentStatus === VendorStatus.UnderReview && !isUpdating">◐</span>
+    <span *ngIf="currentStatus === VendorStatus.Suspended && !isUpdating">⊗</span>
+  </span>
+  
+  <!-- Status Label -->
+  <span class="status-label">{{ getStatusLabel() }}</span>
+</button>

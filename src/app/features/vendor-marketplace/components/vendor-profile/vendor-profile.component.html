@@ -1,0 +1,152 @@
+<div class="vendor-profile" *ngIf="vendor">
+  <!-- Profile Header -->
+  <div class="profile-header">
+    <div class="header-info">
+      <h1 class="vendor-name">{{ vendor.name }}</h1>
+      <p class="company-name">{{ vendor.companyName }}</p>
+    </div>
+    <div class="header-actions">
+      <app-vendor-status-toggle
+        [vendorId]="vendor.id"
+        [currentStatus]="vendor.status"
+        [interactive]="true"
+        (statusChange)="onStatusToggle($event)">
+      </app-vendor-status-toggle>
+      <button
+        *ngIf="canEdit"
+        class="btn-edit"
+        (click)="onEdit()"
+        aria-label="Edit vendor profile">
+        <span class="icon">✏️</span>
+        <span class="button-text">Edit</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Profile Sections -->
+  <div class="profile-content">
+    <!-- Basic Information Section -->
+    <section class="profile-section">
+      <h2 class="section-title">Basic Information</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <a href="mailto:{{ vendor.email }}" class="info-value info-link">
+            {{ vendor.email }}
+          </a>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-label">Phone</span>
+          <a href="tel:{{ vendor.phone }}" class="info-value info-link">
+            {{ vendor.phone }}
+          </a>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Eligibility</span>
+          <span class="info-value">
+            <span class="eligibility-badge" [ngClass]="getEligibilityClass()">
+              {{ getEligibilityLabel() }}
+            </span>
+          </span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Active Widgets</span>
+          <span class="info-value widget-count">
+            {{ vendor.activeWidgetCount }}
+          </span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Joined</span>
+          <span class="info-value">{{ formatDate(vendor.createdAt) }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Last Activity</span>
+          <span class="info-value">
+            {{ vendor.lastActivity ? formatDate(vendor.lastActivity) : 'No activity' }}
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Description Section -->
+    <section class="profile-section" *ngIf="vendor.description">
+      <h2 class="section-title">Description</h2>
+      <p class="description-text">{{ vendor.description }}</p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="profile-section">
+      <h2 class="section-title">Services Offered</h2>
+      <div class="services-list">
+        <span 
+          *ngFor="let service of vendor.services" 
+          class="service-badge">
+          {{ service }}
+        </span>
+      </div>
+      <p *ngIf="vendor.services.length === 0" class="empty-message">
+        No services configured
+      </p>
+    </section>
+
+    <!-- Status History Section -->
+    <section class="profile-section">
+      <h2 class="section-title">Status History</h2>
+      
+      <!-- Loading State -->
+      <div *ngIf="isLoadingHistory" class="loading-history">
+        <span class="spinner" aria-hidden="true"></span>
+        <span>Loading status history...</span>
+      </div>
+
+      <!-- History Timeline -->
+      <div *ngIf="!isLoadingHistory && statusHistory.length > 0" class="status-timeline">
+        <div 
+          *ngFor="let historyItem of statusHistory; let isLast = last" 
+          class="timeline-item"
+          [class.timeline-item-last]="isLast">
+          
+          <div class="timeline-marker" [ngClass]="getStatusClass(historyItem.status)"></div>
+          
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-status" [ngClass]="getStatusClass(historyItem.status)">
+                {{ getStatusLabel(historyItem.status) }}
+              </span>
+              <span class="timeline-date" [title]="formatDate(historyItem.changedAt)">
+                {{ formatRelativeTime(historyItem.changedAt) }}
+              </span>
+            </div>
+            
+            <p *ngIf="historyItem.reason" class="timeline-reason">
+              <strong>Reason:</strong> {{ historyItem.reason }}
+            </p>
+            
+            <p *ngIf="historyItem.changedBy" class="timeline-user">
+              Changed by: <strong>{{ historyItem.changedBy }}</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <p *ngIf="!isLoadingHistory && statusHistory.length === 0" class="empty-message">
+        No status changes recorded
+      </p>
+    </section>
+
+    <!-- Multi-Tenant Isolation Notice -->
+    <section class="isolation-notice">
+      <span class="notice-icon" aria-hidden="true">🔒</span>
+      <div class="notice-content">
+        <strong>Multi-Tenant Isolation</strong>
+        <p>This vendor operates in an isolated environment. All widgets and data are scoped to this vendor and cannot be accessed by other vendors in the marketplace.</p>
+      </div>
+    </section>
+  </div>
+</div>

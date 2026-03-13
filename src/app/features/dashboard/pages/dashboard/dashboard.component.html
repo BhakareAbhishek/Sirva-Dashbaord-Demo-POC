@@ -2,8 +2,21 @@
   <aside class="sidebar">
     <h1 class="brand">sirva</h1>
     <nav aria-label="Main dashboard navigation">
-      <a class="nav-item active" href="#" aria-current="page">Dashboard</a>
-      <a class="nav-item" href="#">Vendor Marketplace</a>
+      <a
+        class="nav-item"
+        routerLink="/dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Dashboard
+      </a>
+      <a
+        class="nav-item"
+        routerLink="/vendor-marketplace"
+        routerLinkActive="active"
+      >
+        Vendor Marketplace
+      </a>
       <a class="nav-item" href="#">Widget Library</a>
       <a class="nav-item" href="#">Publishing Workflow</a>
       <a class="nav-item" href="#">Landing Pages</a>

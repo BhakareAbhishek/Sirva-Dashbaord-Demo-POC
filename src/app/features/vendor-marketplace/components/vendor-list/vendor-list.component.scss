@@ -1,0 +1,236 @@
+.vendor-table-container {
+  overflow-x: auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  .vendor-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+
+    // Table Header
+    thead {
+      background-color: #f9fafb;
+      border-bottom: 2px solid #e5e7eb;
+
+      th {
+        padding: 12px 16px;
+        text-align: left;
+        font-weight: 600;
+        color: #374151;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+
+        &.actions-column {
+          text-align: center;
+        }
+      }
+    }
+
+    // Table Body
+    tbody {
+      .vendor-row {
+        border-bottom: 1px solid #e5e7eb;
+        transition: background-color 0.15s ease;
+
+        &:hover {
+          background-color: #f9fafb;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        td {
+          padding: 16px;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    // Vendor Name Cell
+    .vendor-name-cell {
+      .vendor-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .vendor-name {
+          font-weight: 500;
+          color: #1a1a1a;
+          font-size: 14px;
+        }
+
+        .vendor-company {
+          font-size: 12px;
+          color: #6b7280;
+        }
+      }
+    }
+
+    // Widget Count Cell
+    .widget-count-cell {
+      .widget-count {
+        display: flex;
+        align-items: baseline;
+        gap: 4px;
+
+        .count-number {
+          font-weight: 600;
+          color: #3b82f6;
+          font-size: 16px;
+        }
+
+        .count-label {
+          font-size: 12px;
+          color: #6b7280;
+        }
+      }
+    }
+
+    // Eligibility Badge
+    .eligibility-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+
+      &.eligibility-eligible {
+        background-color: #d1fae5;
+        color: #065f46;
+        border: 1px solid #6ee7b7;
+      }
+
+      &.eligibility-restricted {
+        background-color: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+      }
+    }
+
+    // Services Cell
+    .services-cell {
+      max-width: 200px;
+
+      .services-text {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #4b5563;
+        font-size: 13px;
+      }
+    }
+
+    // Last Activity Cell
+    .last-activity-cell {
+      .activity-date {
+        color: #6b7280;
+        font-size: 13px;
+      }
+    }
+
+    // Actions Cell
+    .actions-cell {
+      text-align: center;
+
+      .action-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+
+        .btn-view {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 12px;
+          background-color: #eff6ff;
+          color: #1e40af;
+          border: 1px solid #bfdbfe;
+          border-radius: 6px;
+          font-size: 13px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          .icon {
+            font-size: 14px;
+          }
+
+          &:hover {
+            background-color: #dbeafe;
+            border-color: #93c5fd;
+          }
+
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive Design
+  @media (max-width: 1024px) {
+    .vendor-table {
+      thead th {
+        padding: 10px 12px;
+        font-size: 12px;
+      }
+
+      tbody td {
+        padding: 12px;
+      }
+
+      .services-cell {
+        max-width: 150px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .vendor-table {
+      font-size: 13px;
+
+      thead th {
+        padding: 8px 10px;
+      }
+
+      tbody td {
+        padding: 10px;
+      }
+
+      .vendor-name-cell {
+        .vendor-info {
+          .vendor-name {
+            font-size: 13px;
+          }
+
+          .vendor-company {
+            font-size: 11px;
+          }
+        }
+      }
+
+      .actions-cell {
+        .action-buttons {
+          .btn-view {
+            .button-text {
+              display: none;
+            }
+
+            .icon {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

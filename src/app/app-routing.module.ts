@@ -14,6 +14,13 @@ const routes: Routes = [
         (module) => module.DashboardModule
       ),
   },
+  {
+    path: 'vendor-marketplace',
+    loadChildren: () =>
+      import('./features/vendor-marketplace/vendor-marketplace.module').then(
+        (module) => module.VendorMarketplaceModule
+      ),
+  },
 ];
 
 @NgModule({

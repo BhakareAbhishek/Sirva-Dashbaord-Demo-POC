@@ -1,0 +1,64 @@
+<div class="search-filter-container">
+  <!-- Search Input -->
+  <div class="search-input-group">
+    <label for="vendor-search" class="sr-only">Search vendors</label>
+    <div class="search-input-wrapper">
+      <span class="search-icon" aria-hidden="true">🔍</span>
+      <input
+        id="vendor-search"
+        type="search"
+        class="search-input"
+        placeholder="Search by vendor name, company, or email..."
+        [value]="searchQuery"
+        (input)="onSearchInput($event)"
+        aria-label="Search vendors by name, company, or email"
+        autocomplete="off">
+      <button
+        *ngIf="searchQuery.length > 0"
+        class="clear-search-btn"
+        (click)="searchQuery = ''; searchChange.emit('')"
+        aria-label="Clear search"
+        type="button">
+        ✕
+      </button>
+    </div>
+  </div>
+
+  <!-- Status Filter Dropdown -->
+  <div class="filter-group">
+    <label for="status-filter" class="sr-only">Filter by status</label>
+    <div class="filter-wrapper">
+      <span class="filter-icon" aria-hidden="true">⚡</span>
+      <select
+        id="status-filter"
+        class="status-filter"
+        [value]="selectedStatus"
+        (change)="onStatusFilterChange($event)"
+        aria-label="Filter vendors by status">
+        <option 
+          *ngFor="let option of statusOptions" 
+          [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Clear Filters Button -->
+  <button
+    *ngIf="hasActiveFilters()"
+    class="btn-clear-filters"
+    (click)="onClearFilters()"
+    aria-label="Clear all filters"
+    type="button">
+    <span class="icon" aria-hidden="true">↺</span>
+    <span class="button-text">Clear Filters</span>
+  </button>
+
+  <!-- Active Filters Indicator -->
+  <div *ngIf="hasActiveFilters()" class="active-filters-indicator" role="status" aria-live="polite">
+    <span class="filters-count">
+      {{ (searchQuery ? 1 : 0) + (selectedStatus !== 'All' ? 1 : 0) }} filter(s) active
+    </span>
+  </div>
+</div>
