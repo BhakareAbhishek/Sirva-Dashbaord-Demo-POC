@@ -1,14 +1,14 @@
 <!--
 Sync Impact Report
-- Version change: 1.1.0 → 1.2.0
+- Version change: 1.2.0 → 1.3.0
 - Modified principles: None (existing principles unchanged)
 - Added sections:
-  - Principle VII: UI/UX Design System & Accessibility (WCAG 2.1 AA) (new)
+  - Principle VIII: Angular Modular Architecture (new)
 - Removed sections: None
 - Templates requiring updates:
-  - ✅ .specify/templates/plan-template.md — Constitution Check remains template-driven; no update required.
+  - ✅ .specify/templates/plan-template.md — Constitution Check includes Principle VIII; no structural change.
   - ✅ .specify/templates/spec-template.md — No structural update required.
-  - ✅ .specify/templates/tasks-template.md — No structural update required.
+  - ✅ .specify/templates/tasks-template.md — No structural update required; task categorization aligns with feature/core/shared modules.
   - ✅ .specify/templates/constitution-template.md — Source template; no update required (this file is the live document).
   - ✅ .cursor/commands/speckit.constitution.md — No update required.
 - Follow-up TODOs: None
@@ -182,16 +182,54 @@ repository history a reliable audit trail for the POC and future handover.
 **Rationale**: Consistent, accessible enterprise UI reduces user error, improves adoption, and
 ensures the platform is usable by all users while remaining scalable across modules.
 
+### VIII. Angular Modular Architecture (NON-NEGOTIABLE)
+
+- The platform MUST follow a modular Angular architecture on Angular 14 (see Principle II).
+- **Feature-based modules**: Each major platform capability MUST be implemented as a feature
+  module. Required feature modules at minimum:
+  - Dashboard
+  - Vendor
+  - Marketplace
+  - Widget Library
+  - Landing Pages
+  - Rules Engine
+  - Analytics
+  - AI Personalization
+  Additional feature modules MAY be added; the architecture MUST support scalability for new
+  modules without breaking existing ones.
+- **Shared module**: Reusable UI components (buttons, cards, forms, layout primitives, etc.)
+  MUST be placed in a dedicated shared module. Shared components MUST NOT contain feature-
+  specific business logic.
+- **Core module**: Singleton and app-wide services (e.g., auth, HTTP interceptors, logging,
+  config) MUST be placed in a core module. Core MUST be imported once at app root.
+- **API communication**: All backend/API communication MUST occur through Angular services;
+  components MUST NOT perform direct HTTP calls or hold API URLs.
+- **Data models**: All domain and DTO shapes MUST be defined using TypeScript interfaces (or
+  classes where runtime behavior is required); ad-hoc or untyped data structures are prohibited.
+- **Component design**: Components MUST remain lightweight and delegate business logic,
+  state, and side effects to services; components SHOULD focus on presentation and user
+  interaction only.
+- **Routing**: Routing MUST follow a modular routing structure (feature-level routing modules
+  with lazy-loading where appropriate); the app shell MUST define the top-level routes and
+  delegate to feature routes.
+
+**Rationale**: A consistent modular structure improves maintainability, testability, and
+onboarding, and ensures the codebase can scale as new capabilities (e.g., additional
+marketplace or analytics modules) are added.
+
 ## Platform Architecture & Modularity
 
-- The platform MUST support the following high-level modules at minimum:
+- The platform MUST support the following high-level modules at minimum (see Principle VIII
+  for Angular module layout and naming):
   - Dashboard
-  - Vendor Marketplace
+  - Vendor
+  - Marketplace
   - Widget Library and AI-assisted widget creation (advisory only)
-  - Landing Page Management
+  - Landing Pages
   - Rules Engine and Rule Templates
   - Publishing Workflow
   - Analytics and Reporting
+  - AI Personalization
 - AI components MUST remain advisory:
   - AI MAY recommend widgets, rules, or layouts.
   - AI MUST NOT publish or bypass human approval flows.
@@ -237,4 +275,4 @@ ensures the platform is usable by all users while remaining scalable across modu
   - New contributors MUST read this constitution and the project README before running any Spec Kit
     commands.
 
-**Version**: 1.2.0 | **Ratified**: 2026-03-13 | **Last Amended**: 2026-03-13
+**Version**: 1.3.0 | **Ratified**: 2026-03-13 | **Last Amended**: 2026-03-13
