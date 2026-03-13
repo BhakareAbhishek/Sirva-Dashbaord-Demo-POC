@@ -19,10 +19,10 @@
 
 **Purpose**: Initialize Angular dashboard feature scaffolding and baseline dependencies.
 
-- [ ] T001 Create dashboard feature module and routing module in `src/app/features/dashboard/dashboard.module.ts` and `src/app/features/dashboard/dashboard-routing.module.ts`
-- [ ] T002 Create dashboard page component shell in `src/app/features/dashboard/pages/dashboard/dashboard.component.ts`, `src/app/features/dashboard/pages/dashboard/dashboard.component.html`, and `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
-- [ ] T003 [P] Add Chart.js dependency and typings configuration in `package.json` and `src/app/features/dashboard/dashboard.module.ts`
-- [ ] T004 [P] Create dashboard service shell in `src/app/core/services/dashboard.service.ts`
+- [x] T001 Create dashboard feature module and routing module in `src/app/features/dashboard/dashboard.module.ts` and `src/app/features/dashboard/dashboard-routing.module.ts`
+- [x] T002 Create dashboard page component shell in `src/app/features/dashboard/pages/dashboard/dashboard.component.ts`, `src/app/features/dashboard/pages/dashboard/dashboard.component.html`, and `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
+- [x] T003 [P] Add Chart.js dependency and typings configuration in `package.json` and `src/app/features/dashboard/dashboard.module.ts`
+- [x] T004 [P] Create dashboard service shell in `src/app/core/services/dashboard.service.ts`
 
 ---
 
@@ -32,15 +32,15 @@
 
 **CRITICAL**: Complete this phase before starting user-story implementation.
 
-- [ ] T005 Define `DashboardMetrics` interface in `src/app/models/dashboard-metrics.model.ts`
-- [ ] T006 [P] Define `AnalyticsData` interface and nested chart point interfaces in `src/app/models/analytics-data.model.ts`
-- [ ] T007 [P] Define `ActivityLog` interface in `src/app/models/activity-log.model.ts`
-- [ ] T008 Define dashboard summary response and section-state interfaces in `src/app/models/dashboard-summary-response.model.ts`
-- [ ] T009 Implement app-level lazy route for dashboard in `src/app/app-routing.module.ts`
-- [ ] T010 Implement feature route mapping to `DashboardComponent` in `src/app/features/dashboard/dashboard-routing.module.ts`
-- [ ] T011 Implement `DashboardService` API integration for `GET /api/dashboard/summary` with typed mapping in `src/app/core/services/dashboard.service.ts`
-- [ ] T012 Implement 60-second polling, manual refresh trigger, and 10-second timeout handling in `src/app/core/services/dashboard.service.ts`
-- [ ] T013 Implement shared error normalization for dashboard API failures/timeouts in `src/app/core/models/dashboard-error.model.ts` and `src/app/core/services/dashboard.service.ts`
+- [x] T005 Define `DashboardMetrics` interface in `src/app/models/dashboard-metrics.model.ts`
+- [x] T006 [P] Define `AnalyticsData` interface and nested chart point interfaces in `src/app/models/analytics-data.model.ts`
+- [x] T007 [P] Define `ActivityLog` interface in `src/app/models/activity-log.model.ts`
+- [x] T008 Define dashboard summary response and section-state interfaces in `src/app/models/dashboard-summary-response.model.ts`
+- [x] T009 Implement app-level lazy route for dashboard in `src/app/app-routing.module.ts`
+- [x] T010 Implement feature route mapping to `DashboardComponent` in `src/app/features/dashboard/dashboard-routing.module.ts`
+- [x] T011 Implement `DashboardService` API integration for `GET /api/dashboard/summary` with typed mapping in `src/app/core/services/dashboard.service.ts`
+- [x] T012 Implement 60-second polling, manual refresh trigger, and 10-second timeout handling in `src/app/core/services/dashboard.service.ts`
+- [x] T013 Implement shared error normalization for dashboard API failures/timeouts in `src/app/core/models/dashboard-error.model.ts` and `src/app/core/services/dashboard.service.ts`
 
 **Checkpoint**: Routing + typed models + service contract are ready; user story work can proceed.
 
@@ -60,11 +60,11 @@
 
 ### Implementation for User Story 1
 
-- [ ] T017 [P] [US1] Create reusable KPI card component in `src/app/features/dashboard/components/kpi-card/kpi-card.component.ts`, `src/app/features/dashboard/components/kpi-card/kpi-card.component.html`, and `src/app/features/dashboard/components/kpi-card/kpi-card.component.scss`
-- [ ] T018 [US1] Wire KPI card component declarations/exports in `src/app/features/dashboard/dashboard.module.ts`
-- [ ] T019 [US1] Implement dashboard page KPI section data binding in `src/app/features/dashboard/pages/dashboard/dashboard.component.ts` and `src/app/features/dashboard/pages/dashboard/dashboard.component.html`
+- [x] T017 [P] [US1] Create reusable KPI card component in `src/app/features/dashboard/components/kpi-card/kpi-card.component.ts`, `src/app/features/dashboard/components/kpi-card/kpi-card.component.html`, and `src/app/features/dashboard/components/kpi-card/kpi-card.component.scss`
+- [x] T018 [US1] Wire KPI card component declarations/exports in `src/app/features/dashboard/dashboard.module.ts`
+- [x] T019 [US1] Implement dashboard page KPI section data binding in `src/app/features/dashboard/pages/dashboard/dashboard.component.ts` and `src/app/features/dashboard/pages/dashboard/dashboard.component.html`
 - [ ] T020 [US1] Implement section-level KPI loading skeleton and inline error/retry UX in `src/app/features/dashboard/pages/dashboard/dashboard.component.html` and `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
-- [ ] T021 [US1] Enforce Angular best practices for KPI components (OnPush change detection, typed inputs, pure view model mapping) in `src/app/features/dashboard/components/kpi-card/kpi-card.component.ts` and `src/app/features/dashboard/pages/dashboard/dashboard.component.ts`
+- [x] T021 [US1] Enforce Angular best practices for KPI components (OnPush change detection, typed inputs, pure view model mapping) in `src/app/features/dashboard/components/kpi-card/kpi-card.component.ts` and `src/app/features/dashboard/pages/dashboard/dashboard.component.ts`
 
 **Checkpoint**: US1 is independently functional and testable as MVP.
 
@@ -84,11 +84,11 @@
 
 ### Implementation for User Story 2
 
-- [ ] T025 [P] [US2] Create reusable analytics chart component in `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.ts`, `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.html`, and `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.scss`
+- [x] T025 [P] [US2] Create reusable analytics chart component in `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.ts`, `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.html`, and `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.scss`
 - [ ] T026 [US2] Configure Chart.js datasets/options mapping in `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.ts`
-- [ ] T027 [US2] Integrate analytics section into dashboard container in `src/app/features/dashboard/pages/dashboard/dashboard.component.ts` and `src/app/features/dashboard/pages/dashboard/dashboard.component.html`
+- [x] T027 [US2] Integrate analytics section into dashboard container in `src/app/features/dashboard/pages/dashboard/dashboard.component.ts` and `src/app/features/dashboard/pages/dashboard/dashboard.component.html`
 - [ ] T028 [US2] Implement analytics section loading/empty/error fallback behavior in `src/app/features/dashboard/pages/dashboard/dashboard.component.html` and `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
-- [ ] T029 [US2] Enforce Angular best practices for analytics component (OnPush, immutable inputs, lightweight template logic) in `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.ts`
+- [x] T029 [US2] Enforce Angular best practices for analytics component (OnPush, immutable inputs, lightweight template logic) in `src/app/features/dashboard/components/analytics-chart/analytics-chart.component.ts`
 
 **Checkpoint**: US2 is independently functional and testable without breaking US1.
 
@@ -108,10 +108,10 @@
 
 ### Implementation for User Story 3
 
-- [ ] T033 [P] [US3] Create reusable recent activity component in `src/app/features/dashboard/components/recent-activity/recent-activity.component.ts`, `src/app/features/dashboard/components/recent-activity/recent-activity.component.html`, and `src/app/features/dashboard/components/recent-activity/recent-activity.component.scss`
-- [ ] T034 [US3] Integrate recent activity section into dashboard container in `src/app/features/dashboard/pages/dashboard/dashboard.component.ts` and `src/app/features/dashboard/pages/dashboard/dashboard.component.html`
-- [ ] T035 [US3] Implement activity empty state, inline error/retry, and stale-data fallback in `src/app/features/dashboard/pages/dashboard/dashboard.component.html` and `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
-- [ ] T036 [US3] Enforce Angular best practices for activity component (OnPush, trackBy, typed inputs) in `src/app/features/dashboard/components/recent-activity/recent-activity.component.ts`
+- [x] T033 [P] [US3] Create reusable recent activity component in `src/app/features/dashboard/components/recent-activity/recent-activity.component.ts`, `src/app/features/dashboard/components/recent-activity/recent-activity.component.html`, and `src/app/features/dashboard/components/recent-activity/recent-activity.component.scss`
+- [x] T034 [US3] Integrate recent activity section into dashboard container in `src/app/features/dashboard/pages/dashboard/dashboard.component.ts` and `src/app/features/dashboard/pages/dashboard/dashboard.component.html`
+- [x] T035 [US3] Implement activity empty state, inline error/retry, and stale-data fallback in `src/app/features/dashboard/pages/dashboard/dashboard.component.html` and `src/app/features/dashboard/pages/dashboard/dashboard.component.scss`
+- [x] T036 [US3] Enforce Angular best practices for activity component (OnPush, trackBy, typed inputs) in `src/app/features/dashboard/components/recent-activity/recent-activity.component.ts`
 
 **Checkpoint**: US3 is independently functional and testable with US1 and US2 preserved.
 

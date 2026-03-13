@@ -1,0 +1,35 @@
+.recent-activity {
+  border: 1px solid #ececf2;
+  border-radius: 12px;
+  background: #fff;
+  padding: 16px;
+}
+
+.recent-activity h3 {
+  margin: 0 0 8px;
+}
+
+.error {
+  color: #b42318;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  border-top: 1px solid #f2f4f7;
+  padding: 10px 0;
+}
+
+p {
+  margin: 4px 0 0;
+  color: #667085;
+  font-size: 13px;
+}

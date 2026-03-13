@@ -1,0 +1,19 @@
+<section class="recent-activity" [attr.aria-busy]="loading">
+  <h3>Recent Activity</h3>
+
+  <p *ngIf="loading">Loading activity...</p>
+  <p *ngIf="!loading && errorMessage" class="error">{{ errorMessage }}</p>
+  <p *ngIf="!loading && !errorMessage && activities.length === 0">
+    No recent activity available.
+  </p>
+
+  <ul *ngIf="!loading && !errorMessage && activities.length > 0">
+    <li *ngFor="let activity of activities; trackBy: trackByActivityId">
+      <div>
+        <strong>{{ activity.eventType }}</strong>
+        <p>{{ activity.message }}</p>
+      </div>
+      <small>{{ activity.occurredAt | date : 'MMM d, h:mm a' }}</small>
+    </li>
+  </ul>
+</section>
