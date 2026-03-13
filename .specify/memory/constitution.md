@@ -1,50 +1,152 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+- Version change: N/A → 1.0.0
+- Modified principles: None (initial ratification)
+- Added sections:
+  - Core Principles
+  - Platform Architecture & Modularity
+  - Development Workflow & Quality Gates
+  - Governance
+- Removed sections: None
+- Templates requiring updates:
+  - ✅ .specify/templates/plan-template.md (Constitution Check gates aligned)
+  - ✅ .specify/templates/spec-template.md (traceability and measurable outcomes reinforced)
+  - ✅ .specify/templates/tasks-template.md (Spec-First and gating rules reflected)
+  - ✅ .cursor/commands/speckit.constitution.md (constitution sync instructions already aligned)
+  - ✅ .cursor/commands/speckit.specify.md (spec quality and governance flow aligned)
+  - ✅ .cursor/commands/speckit.clarify.md (runs before plan per constitution)
+  - ✅ .cursor/commands/speckit.plan.md (constitution check draws from this document)
+  - ✅ .cursor/commands/speckit.tasks.md (tasks depend on approved spec and plan)
+  - ✅ .cursor/commands/speckit.analyze.md (treats constitution as non‑negotiable)
+  - ✅ .cursor/commands/speckit.checklist.md (checklists used as pre‑implementation gates)
+  - ✅ .cursor/commands/speckit.implement.md (enforces pre‑implementation artifacts and checklists)
+- Follow-up TODOs:
+  - None (all placeholders resolved for this POC constitution)
+-->
+
+# Sirva CMS Marketplace Platform POC Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Spec-First Development (NON-NEGOTIABLE)
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+- All work MUST follow the Spec Kit Spec-First workflow in this exact order:
+  `constitution → specification → clarification → plan → tasks → checklist → implementation`.
+- No implementation work (code, schema, or infrastructure changes) MAY begin until:
+  - `spec.md` is complete and approved.
+  - `plan.md` is complete and approved.
+  - `tasks.md` is complete and approved.
+  - At least one governance checklist (from `/speckit.checklist`) is created and approved.
+- Every feature MUST have a traceable artifact chain:
+  - Feature request → `spec.md` user stories and requirements.
+  - `spec.md` → `plan.md` architecture and data decisions.
+  - `plan.md` → `tasks.md` dependency-ordered tasks.
+  - `tasks.md` → implementation commits and test evidence.
+- `/speckit.analyze` MUST run after `tasks.md` generation and BEFORE `/speckit.implement` for every feature, and any CRITICAL issues MUST be resolved or explicitly deferred with owner and rationale.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+**Rationale**: Spec-First governance ensures the hackathon POC remains coherent, reviewable, and demonstrably traceable from idea to implementation, even with multiple contributors working in parallel.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### II. Angular-First Frontend with Clear Boundaries
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+- Angular 14 is the default and preferred framework for all UI implementation in this POC.
+- Frontend code MUST:
+  - Use typed models and interfaces for all data flowing between components and services.
+  - Encapsulate feature logic into reusable, testable Angular modules and components.
+  - Implement clear loading, error, and empty states for every user-facing page or widget.
+- Any deviation from Angular 14 (e.g., use of raw HTML/JS or a different framework) MUST be:
+  - Justified in `plan.md` with trade-offs.
+  - Approved via code review on a dedicated PR.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+**Rationale**: Standardizing on Angular 14 keeps the POC consistent, maintainable, and easier for new team members to understand and extend.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### III. Modularity, Maintainability, and Future Expansion
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+- The system MUST be decomposed into well-defined, modular domains (e.g., Dashboard, Vendor Marketplace, Widget Library, Rules Engine, Publishing Workflow, Analytics).
+- Each module MUST:
+  - Have clearly documented responsibilities in `spec.md` and `plan.md`.
+  - Expose well-defined contracts (interfaces, APIs, or shared models) documented under `contracts/` where applicable.
+  - Avoid tight coupling to other modules; cross-module dependencies MUST be explicit in `plan.md`.
+- Refactoring to improve readability, reuse, or separation of concerns is encouraged and SHOULD be captured as tasks in `tasks.md` with clear module ownership.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+**Rationale**: A modular architecture is essential for evolving the Sirva CMS Marketplace Platform beyond the POC without rewriting core flows.
+
+### IV. Collaboration, Reviews, and Documentation Ownership
+
+- All pull requests targeting the main branch MUST:
+  - Be raised from a feature or fix branch.
+  - Receive at least one peer review before merge (self-approval is not allowed).
+  - Demonstrate traceability back to a feature spec and tasks (reference feature number or path in description).
+- Every team member MUST:
+  - Contribute at least one constitution/spec/plan/tasks/documentation update.
+  - Contribute implementation and/or test commits aligned to tasks in `tasks.md`.
+- Major decisions (architecture choices, data model changes, workflow design, governance exceptions) MUST be:
+  - Documented in `plan.md`, `research.md`, or a clearly linked decision log.
+  - Referenced in PR descriptions for discoverability.
+
+**Rationale**: Shared ownership, reviews, and decision logging improve quality, knowledge transfer, and credibility of the POC during judging and future handover.
+
+### V. Quality, Traceability, and Non-Functional Discipline
+
+- Requirements quality:
+  - Specifications MUST use measurable, testable language; vague terms (e.g., “fast”, “secure”, “user-friendly”) MUST be refined in `/speckit.clarify` before planning.
+  - `/speckit.checklist` MUST be used to create “unit tests for English” before implementation; incomplete critical checklist items MUST be addressed or explicitly deferred with owner and reason.
+- Implementation quality:
+  - Tests (unit, integration, or end-to-end as appropriate) SHOULD be defined for critical flows and recorded as tasks.
+  - Logging and basic observability SHOULD be included for key operations where it aids debugging during the POC.
+- Traceability:
+  - Each task in `tasks.md` MUST map to at least one user story or requirement.
+  - Each implementation commit SHOULD reference the relevant task ID(s) and feature.
+
+**Rationale**: Explicit traceability and quality discipline ensure the POC demonstrates enterprise-grade practices even with hackathon time constraints.
+
+## Platform Architecture & Modularity
+
+- The platform MUST support the following high-level modules at minimum:
+  - Dashboard
+  - Vendor Marketplace
+  - Widget Library and AI-assisted widget creation (advisory only)
+  - Landing Page Management
+  - Rules Engine and Rule Templates
+  - Publishing Workflow
+  - Analytics and Reporting
+- AI components MUST remain advisory:
+  - AI MAY recommend widgets, rules, or layouts.
+  - AI MUST NOT publish or bypass human approval flows.
+- Security, role-based access, and approval workflows are governed by the README and subsequent specs/plan; any change to these behaviors MUST be documented as an explicit decision in `plan.md`.
+
+## Development Workflow & Quality Gates
+
+- The mandatory workflow for every feature is:
+  1. `/speckit.constitution` (this document kept up to date as needed).
+  2. `/speckit.specify` to create or update `spec.md`.
+  3. `/speckit.clarify` to resolve critical ambiguities.
+  4. `/speckit.plan` to generate `plan.md`, data model, contracts, and quickstart.
+  5. `/speckit.tasks` to generate `tasks.md`.
+  6. `/speckit.analyze` to check cross-artifact consistency and constitution alignment.
+  7. `/speckit.checklist` to create governance and quality checklists.
+  8. `/speckit.implement` to execute `tasks.md` and update progress.
+- **No implementation task MAY start before:**
+  - `spec.md`, `plan.md`, and `tasks.md` are present and marked ready by the relevant role owners.
+  - At least one checklist file exists with all CRITICAL items complete or explicitly deferred by the Project Manager and Tech Lead.
+- Any deviation from this workflow for spikes or experiments MUST:
+  - Be labeled as such in branch and PR names.
+  - Not be merged into main without backfilling the missing artifacts.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- This constitution is the authoritative source of development governance for the Sirva CMS Marketplace Platform POC. In case of conflict, it overrides ad hoc practices or local team habits.
+- Amendment rules:
+  - Any change to principles or workflow MUST be proposed via `/speckit.constitution` and captured as a new version.
+  - Amendments MUST describe why the change is needed (e.g., discovered constraint, improved practice).
+  - MAJOR changes (breaking or relaxing non-negotiable rules) require consensus from PM, Tech Lead, and QA Lead.
+- Versioning policy:
+  - MAJOR version: Backward-incompatible governance or principle changes.
+  - MINOR version: New principles or sections, or materially strengthened guidance.
+  - PATCH version: Clarifications and editorial improvements with no semantic effect.
+- Compliance:
+  - `/speckit.analyze` MUST treat this constitution as non-negotiable; any violation is CRITICAL.
+  - Code reviews MUST include a quick constitution compliance check for the affected areas.
+  - New contributors MUST read this constitution and the project README before running any Spec Kit commands.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-03-13 | **Last Amended**: 2026-03-13
+
