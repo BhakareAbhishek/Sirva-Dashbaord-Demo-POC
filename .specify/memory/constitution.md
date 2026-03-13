@@ -1,24 +1,17 @@
 <!--
 Sync Impact Report
-- Version change: 1.0.0 → 1.1.0
+- Version change: 1.1.0 → 1.2.0
 - Modified principles: None (existing principles unchanged)
 - Added sections:
-  - Principle VI: Repository Governance & Version Control (new)
+  - Principle VII: UI/UX Design System & Accessibility (WCAG 2.1 AA) (new)
 - Removed sections: None
 - Templates requiring updates:
-  - ✅ .specify/templates/plan-template.md — Branch line already uses feature-branch convention; no semantic change required.
-  - ✅ .specify/templates/spec-template.md — Traceability and spec-sync rules reinforced by new Principle VI; no structural update required.
-  - ✅ .specify/templates/tasks-template.md — Commit-per-task guidance aligns with new commit message standard; no structural update required.
+  - ✅ .specify/templates/plan-template.md — Constitution Check remains template-driven; no update required.
+  - ✅ .specify/templates/spec-template.md — No structural update required.
+  - ✅ .specify/templates/tasks-template.md — No structural update required.
   - ✅ .specify/templates/constitution-template.md — Source template; no update required (this file is the live document).
-  - ✅ .cursor/commands/speckit.constitution.md — Already aligned; no update required.
-  - ✅ .cursor/commands/speckit.specify.md — Spec-sync rule in Principle VI reinforces existing guidance.
-  - ✅ .cursor/commands/speckit.plan.md — Branch naming convention in Principle VI is consistent with plan branch field.
-  - ✅ .cursor/commands/speckit.tasks.md — Commit message standard in Principle VI supplements existing task-to-commit guidance.
-  - ✅ .cursor/commands/speckit.implement.md — PR requirements in Principle VI add PR-level gates consistent with implementation workflow.
-  - ✅ .cursor/commands/speckit.analyze.md — Treats constitution as non-negotiable; new principle automatically covered.
-  - ✅ .cursor/commands/speckit.checklist.md — Checklist gate already aligned; no update required.
-  - ✅ .cursor/commands/speckit.clarify.md — No impact from new principle.
-- Follow-up TODOs: None (all fields resolved)
+  - ✅ .cursor/commands/speckit.constitution.md — No update required.
+- Follow-up TODOs: None
 -->
 
 # Sirva CMS Marketplace Platform POC Constitution
@@ -160,6 +153,35 @@ enterprise-grade practices even with hackathon time constraints.
 requirements, planning, and implementation; keeps `main` always demo-ready; and makes the
 repository history a reliable audit trail for the POC and future handover.
 
+### VII. UI/UX Design System & Accessibility (WCAG 2.1 AA) (NON-NEGOTIABLE)
+
+- The Sirva CMS Marketplace Platform UI MUST follow modern enterprise design principles and MUST
+  remain consistent with the approved Figma design reference.
+- The UI MUST comply with WCAG 2.1 accessibility guidelines (AA minimum) as defined by:
+  `https://www.w3.org/TR/WCAG21/`.
+- Accessibility requirements (minimum):
+  - Color contrast MUST meet WCAG AA for text, icons, and essential UI affordances.
+  - All interactive elements MUST support keyboard navigation and MUST be usable without a mouse.
+  - Focus states MUST be clearly visible and MUST not be removed without an accessible alternative.
+  - Form inputs MUST have programmatic labels and accessible descriptions for validation and helper
+    text; errors MUST be announced to assistive technologies.
+  - Images and non-text content MUST include appropriate alternative text (or be correctly marked as
+    decorative).
+  - Navigation order MUST be logical and consistent across modules; headings and landmarks SHOULD be
+    used to aid screen reader navigation.
+  - Components MUST support users with visual impairments (scalable text, non-color-dependent cues,
+    sufficient hit targets, readable spacing).
+- Design system rules:
+  - UI MUST be built from reusable Angular components (no one-off markup for shared patterns).
+  - Typography and spacing MUST be consistent across modules and aligned to the Figma reference.
+  - A centralized design token system MUST be used for colors, typography, spacing, radii, and
+    elevations (no hard-coded one-off values outside tokens).
+  - Layouts MUST be responsive for desktop and tablet screens, maintaining usability and
+    information hierarchy at common breakpoints.
+
+**Rationale**: Consistent, accessible enterprise UI reduces user error, improves adoption, and
+ensures the platform is usable by all users while remaining scalable across modules.
+
 ## Platform Architecture & Modularity
 
 - The platform MUST support the following high-level modules at minimum:
@@ -215,4 +237,4 @@ repository history a reliable audit trail for the POC and future handover.
   - New contributors MUST read this constitution and the project README before running any Spec Kit
     commands.
 
-**Version**: 1.1.0 | **Ratified**: 2026-03-13 | **Last Amended**: 2026-03-13
+**Version**: 1.2.0 | **Ratified**: 2026-03-13 | **Last Amended**: 2026-03-13
