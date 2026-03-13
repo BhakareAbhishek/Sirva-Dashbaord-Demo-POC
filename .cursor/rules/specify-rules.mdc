@@ -8,6 +8,8 @@ alwaysApply: true
 Auto-generated from all feature plans. Last updated: 2026-03-13
 
 ## Active Technologies
+- TypeScript (Angular 14 baseline) + Angular 14, Angular Router, RxJS, HttpClient, Chart.js (002-admin-dashboard)
+- N/A (frontend module consuming backend APIs) (002-admin-dashboard)
 
 - TypeScript 4.6+ (Angular 14) + Angular 14, Angular Router, RxJS, Chart.js (ng2-charts or equivalent), Angular Material or custom design system (main)
 
@@ -28,6 +30,7 @@ npm test; npm run lint
 TypeScript 4.6+ (Angular 14): Follow standard conventions
 
 ## Recent Changes
+- 002-admin-dashboard: Added TypeScript (Angular 14 baseline) + Angular 14, Angular Router, RxJS, HttpClient, Chart.js
 
 - main: Added TypeScript 4.6+ (Angular 14) + Angular 14, Angular Router, RxJS, Chart.js (ng2-charts or equivalent), Angular Material or custom design system
 
